@@ -1,0 +1,128 @@
+const car = [
+    {
+        model: 'BMW',
+        color: 'Red',
+        img: 'https://cdn.pixabay.com/photo/2018/03/21/21/53/sky-3248376_1280.jpg'
+    },
+    {
+        model: 'audi',
+        color: 'Green',
+        img: 'https://cdn.pixabay.com/photo/2017/08/25/19/10/car-2681089_1280.jpg'
+    },
+    {
+        model: 'mercedes',
+        color: 'Yellow',
+        img: 'https://cdn.pixabay.com/photo/2021/02/26/14/22/car-6052006_1280.jpg'
+    }
+];
+const animal = [
+    {
+        name: 'Cow',
+        weight: '500kg',
+        img: 'https://cdn.pixabay.com/photo/2014/08/23/11/33/cow-425164_1280.jpg'
+    },
+    {
+        name: 'Horse',
+        weight: '300kg',
+        img: 'https://cdn.pixabay.com/photo/2019/12/26/10/44/horse-4720178_1280.jpg'
+    },
+    {
+        name: 'Sheep',
+        weight: '100kg',
+        img: 'https://cdn.pixabay.com/photo/2019/06/24/15/30/sheep-4296302_1280.jpg'
+    }
+];
+const person = [
+    {
+        name: 'John',
+        age: '30',
+        img: 'https://cdn.pixabay.com/photo/2016/03/24/09/10/man-1276384_1280.jpg',
+        likes: 2
+    },
+    {
+        name: 'Bob',
+        age: '26',
+        img: 'https://cdn.pixabay.com/photo/2018/04/27/03/50/portrait-3353699_1280.jpg',
+        likes: 5
+    },
+    {
+        name: 'Maria',
+        age: '20',
+        img: 'https://cdn.pixabay.com/photo/2018/01/22/07/31/portrait-3098319_1280.jpg',
+        likes: 7
+    }
+];
+
+const carOut = document.getElementById("content");
+
+for (let cars of car) {
+    carOut.innerHTML += `
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${cars.img}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${cars.model}</h5>
+                    <p class="card-text">Color: ${cars.color}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+const animalOut = document.getElementById("content");
+
+for (let animals of animal) {
+    animalOut.innerHTML += `
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${animals.img}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${animals.name}</h5>
+                    <p class="card-text">Weight: ${animals.weight}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+const personOut = document.getElementById("content");
+
+
+for (let persons of person) {
+    animalOut.innerHTML += `
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${persons.img}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${persons.name}</h5>
+                    <p class="card-text">Age: ${persons.age}</p>
+                    <p class="card-text myLikes">${persons.likes}</p>
+                    <a class="btn btn-primary myBtn">Like</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+let btns = document.getElementsByClassName("myBtn");
+
+console.log(btns);
+
+for (let i in Array.from(btns)) {
+    console.log(i)
+    btns[i].addEventListener("click", function() {
+        person[i].likes++;
+        document.getElementsByClassName("myLikes")[i].innerHTML = person[i].likes;
+    })
+}
